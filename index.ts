@@ -1,17 +1,19 @@
-const express = require('express')
-
-const { AllClients,
+import express from 'express';
+import dotenv from 'dotenv';
+import {
+    AllClients,
     getChamadosByStatus_AGEN,
     getChamadosByStatus_INIC,
     getChamadosByStatus_ACTE,
     getChamadosByStatus_DESP,
     getChamadosByStatus_FIOK,
     OpenOrdemServico
-} = require('./functions')
+} from './functions';
 
-require('dotenv').config()
+dotenv.config();
+declare const process: any;
 
-const APP = express()
+const APP = express();
 APP.use(express.json())
 const PORT = process.env.PORT
 
@@ -108,7 +110,7 @@ APP.get('/chamados-agen', async (req, res) => {
         }
 
         // Obter lista de chamados pelo status
-        const LIST_CHAMADOS_STATUS = await getChamadosByStatus_AGEN(ID);
+        const LIST_CHAMADOS_STATUS: any = await getChamadosByStatus_AGEN(ID);
         console.log('Lista de chamados obtida:', LIST_CHAMADOS_STATUS);
 
         if (!LIST_CHAMADOS_STATUS || LIST_CHAMADOS_STATUS.length === 0) {
@@ -178,7 +180,7 @@ APP.get('/chamados-inic', async (req, res) => {
         }
 
         // Obter lista de chamados pelo status
-        const LIST_CHAMADOS_STATUS = await getChamadosByStatus_INIC(ID);
+        const LIST_CHAMADOS_STATUS: any = await getChamadosByStatus_INIC(ID);
         console.log('Lista de chamados obtida:', LIST_CHAMADOS_STATUS);
 
         if (!LIST_CHAMADOS_STATUS || LIST_CHAMADOS_STATUS.length === 0) {
@@ -248,7 +250,7 @@ APP.get('/chamados-acte', async (req, res) => {
         }
 
         // Obter lista de chamados pelo status
-        const LIST_CHAMADOS_STATUS = await getChamadosByStatus_ACTE(ID);
+        const LIST_CHAMADOS_STATUS: any = await getChamadosByStatus_ACTE(ID);
         console.log('Lista de chamados obtida:', LIST_CHAMADOS_STATUS);
 
         if (!LIST_CHAMADOS_STATUS || LIST_CHAMADOS_STATUS.length === 0) {
@@ -318,7 +320,7 @@ APP.get('/chamados-desp', async (req, res) => {
         }
 
         // Obter lista de chamados pelo status
-        const LIST_CHAMADOS_STATUS = await getChamadosByStatus_DESP(ID);
+        const LIST_CHAMADOS_STATUS: any = await getChamadosByStatus_DESP(ID);
         console.log('Lista de chamados obtida:', LIST_CHAMADOS_STATUS);
 
         if (!LIST_CHAMADOS_STATUS || LIST_CHAMADOS_STATUS.length === 0) {
@@ -388,7 +390,7 @@ APP.get('/chamados-fiok', async (req, res) => {
         }
 
         // Obter lista de chamados pelo status
-        const LIST_CHAMADOS_STATUS = await getChamadosByStatus_FIOK(ID);
+        const LIST_CHAMADOS_STATUS: any = await getChamadosByStatus_FIOK(ID);
         console.log('Lista de chamados obtida:', LIST_CHAMADOS_STATUS);
 
         if (!LIST_CHAMADOS_STATUS || LIST_CHAMADOS_STATUS.length === 0) {

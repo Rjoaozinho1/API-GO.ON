@@ -1,6 +1,8 @@
-const { XMLParser } = require("fast-xml-parser");
-const axios = require('axios')
-require('dotenv').config()
+import { XMLParser } from "fast-xml-parser";
+import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
+declare const process: any;
 
 function formatDate() {
 
@@ -37,6 +39,14 @@ function go_onParams(body, funcao) {
         },
         data: body
     }
+}
+
+function generateGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = Math.random() * 16 | 0,
+            v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
 }
 
 async function dealWithChamados(response, id) {
@@ -478,7 +488,7 @@ async function OpenOrdemServico(clientData) {
     }
 }
 
-module.exports = {
+export {
     AllClients,
     getChamadosByStatus_AGEN,
     getChamadosByStatus_INIC,
